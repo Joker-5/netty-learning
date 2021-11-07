@@ -9,9 +9,11 @@
         <outputRelativeToContentRoot value="true" />
         <module name="netty-simple-test" />
         <module name="netty-quick-demo" />
+        <module name="netty-commons" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="netty-commons" target="1.8" />
       <module name="netty-quick-demo" target="1.8" />
       <module name="netty-simple-demo" target="8" />
       <module name="netty-simple-test" target="1.8" />

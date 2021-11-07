@@ -24,6 +24,7 @@ public class ChannelDemo {
                     log.error("{}", (char) buffer.get());
                 }
                 buffer.clear();
+                buffer.compact();
             } while (true);
         } catch (IOException e) {
             e.printStackTrace();

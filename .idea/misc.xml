@@ -5,6 +5,7 @@
       <list>
         <option value="$PROJECT_DIR$/netty-simple-test/pom.xml" />
         <option value="$PROJECT_DIR$/netty-quick-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/netty-commons/pom.xml" />
       </list>
     </option>
   </component>
