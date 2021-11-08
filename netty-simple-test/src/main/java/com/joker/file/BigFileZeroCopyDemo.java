@@ -10,17 +10,18 @@ import java.io.IOException;
 import java.nio.channels.FileChannel;
 
 @Slf4j
-public class TwoChannelDemo {
+public class BigFileZeroCopyDemo {
     public static void main(String[] args) {
-        long start = System.nanoTime();
         try (FileChannel from = new FileInputStream(FilePathConstant.FROM).getChannel();
              FileChannel to = new FileOutputStream(FilePathConstant.TO).getChannel()) {
-            // get 到源文件字节数后直接传即可
-            from.transferTo(0, from.size(), to);
+            final long size = from.size();
+            // 利用os零拷贝进行优化
+            for (long left = size; left > 0; ) {
+                log.info("position: {}, left: {}", (size - left), left);
+                left -= from.transferTo((size - left), left, to);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        long end = System.nanoTime();
-        log.info("send cost time: {} ", (end - start) / 1000_000.0);
     }
 }
